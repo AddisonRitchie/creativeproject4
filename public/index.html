@@ -1,0 +1,55 @@
+<!--creative project 4-->
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8" />
+
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+  <link rel="stylesheet" type="text/css" href="stylesheets/style.css">
+  <title>Lab 4</title>
+</head>
+
+<body>
+  <div id="app">
+    <h1>Find a City</h1>
+
+    <!--city find-->
+    <form v-on:keyup.prevent="fetchREST">
+      <input type="text" v-model="prefix">
+    </form>
+    <ul id="double"> <span class="code-comment"></span>
+      <li v-for="item in cities">
+        {{ item.name }}
+      </li>
+    </ul>
+
+    <hr>
+
+    <h1>Word Search</h1>
+    <!--owl dicitionary-->
+    <form v-on:keyup.prevent="proxyREST">
+      <input type="text" v-model="wordPrefix">
+    </form>
+
+    <!--defenitionArray-->
+    <ol>
+    <h3> Possible Definitions: </h3>
+    <li v-for="item in defenitionArray">
+      {{ item }}
+      <hr>
+    </li>
+    </ol>
+
+  </div>
+  <script src="https://cdn.jsdelivr.net/npm/vue@2.6.2/dist/vue.js"></script>
+  <script src="javascripts/script.js"></script>
+</body>
+
+
+<div class="footer">
+  <a href="https://www.github.com/BYUCS260/lab-4-node-AddisonRitchie.git"> GitHub Link</a>
+</div>
+
+</html>
