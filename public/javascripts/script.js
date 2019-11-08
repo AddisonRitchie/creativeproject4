@@ -9,9 +9,13 @@ var app = new Vue({
     wordPrefix: '',
     defenition: '',
     defenitionArray: [],
-    wordinformation: ''
+    wordinformation: '',
+    
+    completeImagesArray: [],
   },
   methods: {
+    
+    
     //CITY FIND
     fetchREST() {
       console.log("In Fetch " + this.prefix);
@@ -25,15 +29,19 @@ var app = new Vue({
         .then((data) => {
           return (data.json());
         })
-        .then((citylist) => {
-          console.log("CityList");
-          // console.log(citylist);
-          this.cities = [];
-          for (let i = 0; i < citylist.length; i++) {
-            console.log(citylist[i].city);
-            this.cities.push({ name: citylist[i].city });
-          };
-          console.log("Got Citylist");
+        .then((imagesArray) => {
+          console.log("ImagesFromServer");
+          console.log(imagesArray);
+          
+          this.completeImagesArray = imagesArray;
+          
+          
+          // this.cities = [];
+          // for (let i = 0; i < imagesArray.length; i++) {
+          //   console.log(imagesArray[i].city);
+          //   this.cities.push({ name: imagesArray[i].title });
+          // };
+          // console.log("Got Citylist");
         });
     },
     

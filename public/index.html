@@ -8,39 +8,36 @@
 
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
   <link rel="stylesheet" type="text/css" href="stylesheets/style.css">
-  <title>Lab 4</title>
+  <title>CreativeProject4</title>
 </head>
 
 <body>
   <div id="app">
-    <h1>Find a City</h1>
+    <h1>Visual Find</h1>
+    <p> Enter a word to find visual references from various sources. No matter your need, we will find the visual for you! The backend server 
+    will call the Metropolitan Museum of Art, Icon8, and Giphy APIs and repackages them for your enjoyment.</p>
 
     <!--city find-->
-    <form v-on:keyup.prevent="fetchREST">
-      <input type="text" v-model="prefix">
-    </form>
-    <ul id="double"> <span class="code-comment"></span>
-      <li v-for="item in cities">
-        {{ item.name }}
-      </li>
-    </ul>
-
-    <hr>
-
-    <h1>Word Search</h1>
-    <!--owl dicitionary-->
-    <form v-on:keyup.prevent="proxyREST">
-      <input type="text" v-model="wordPrefix">
-    </form>
-
-    <!--defenitionArray-->
-    <ol>
-    <h3> Possible Definitions: </h3>
-    <li v-for="item in defenitionArray">
-      {{ item }}
-      <hr>
-    </li>
-    </ol>
+    <!--<form v-on:keyup.prevent="fetchREST">-->
+    <!--  <input type="text" v-model="prefix">-->
+    <!--</form>-->
+    
+        <input type="text" v-model="prefix" v-on:keyup.enter="fetchREST" placeholder="i.e. cat">
+        <button v-on:click="fetchREST">Search</button>
+    
+    <div id="imageContainer">
+      <div v-for="imageObject in completeImagesArray">
+        
+        <div id="singleImageContainer">
+          {{ imageObject.title }}
+        <a v-bind:href=imageObject.hyperlink target="_blank"> <img :src="imageObject.imageURL" width="100%" height="100%"></a>
+        <!--{{imageObject.imageURL.images.fixed_height.url}}-->
+        </div>
+        
+      </div>
+      
+    </div>
+      
 
   </div>
   <script src="https://cdn.jsdelivr.net/npm/vue@2.6.2/dist/vue.js"></script>
@@ -49,7 +46,7 @@
 
 
 <div class="footer">
-  <a href="https://www.github.com/BYUCS260/lab-4-node-AddisonRitchie.git"> GitHub Link</a>
+  <a href="https://www.github.com/AddisonRitchie/creativeproject4.git"> GitHub Link</a>
 </div>
 
 </html>
